@@ -68,7 +68,7 @@ void ArcLookAt::doPan(const glm::vec2& ssPos)
   glm::vec2 trans = delta * mCamDistance / 2.0f;
 
   glm::mat4 camRot = mArcBall->getTransformation();
-  glm::vec3 translation = 
+  glm::vec3 translation =
         static_cast<glm::vec3>(camRot[0]) * trans.x
       + static_cast<glm::vec3>(camRot[1]) * trans.y;
   mCamLookAt = mReferenceLookAt + translation;
@@ -144,6 +144,14 @@ void ArcLookAt::autoview(const CPM_GLM_AABB_NS::AABB& bbox, float fov)
   // => f = AC / (2 * tan(O(v) / 2)
 
   mCamDistance = w / (2 * tan(fov / 2.0));
+}
+
+//------------------------------------------------------------------------------
+void ArcLookAt::setView(const glm::vec3& view, const glm::vec3& up)
+{
+    glm::vec3 location = mCamDistance * view;
+    mArcBall->setLocationOnSphere(location, up);
+    mCamLookAt = mReferenceLookAt;
 }
 
 } // namespace CPM_ARC_LOOK_AT_NS

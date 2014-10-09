@@ -59,7 +59,7 @@ class ArcLookAt
 public:
   ArcLookAt();
   virtual ~ArcLookAt();
-  
+
   /// Sets the reference point for upcoming operations.
   /// Should be be called before any of the 'do' function below, and acts
   /// as the 'mouse down' in the mouse input process. The 'do' functions below
@@ -89,6 +89,9 @@ public:
   /// \p fov is expected to be in radians.
   void autoview(const CPM_GLM_AABB_NS::AABB& aabb, float fov);
 
+  /// Sets the view to the specified location and up
+  void setView(const glm::vec3& view, const glm::vec3& up);
+
   /// Retrieves the camera's distance away from the look at point.
   glm::float_t getCamDistance() const   {return mCamDistance;}
 
@@ -112,6 +115,6 @@ private:
   glm::float_t              mReferenceCamDistance;
 };
 
-} // namespace CPM_ARC_LOOK_AT_NS 
+} // namespace CPM_ARC_LOOK_AT_NS
 
 #endif
