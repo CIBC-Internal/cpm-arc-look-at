@@ -43,13 +43,13 @@ CPM_AddModule("GLM"
 # ++ MODULE: arc_ball
 CPM_AddModule("arc_ball"
   GIT_REPOSITORY "https://github.com/CIBC-Internal/cpm-arc-ball"
-  GIT_TAG "origin/SCIRun"
+  GIT_TAG "origin/master"
   FORWARD_DECLARATION TRUE)
 
 # ++ MODULE: Axis aligned bounding box
 CPM_AddModule("glm_aabb"
   GIT_REPOSITORY "https://github.com/CIBC-Internal/cpm-glm-aabb"
-  GIT_TAG "origin/SCIRun"
+  GIT_TAG "origin/master"
   USE_EXISTING_VER TRUE
   EXPORT_MODULE TRUE)
 
