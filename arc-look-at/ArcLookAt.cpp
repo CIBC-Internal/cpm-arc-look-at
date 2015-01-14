@@ -31,7 +31,6 @@
 
 #include "ArcLookAt.hpp"
 #include <arc-ball/ArcBall.hpp>
-#include <iostream>
 
 namespace ArcBall = CPM_ARC_BALL_NS;
 
@@ -86,14 +85,14 @@ void ArcLookAt::doZoom(glm::float_t camZoom)
 {
   //mCamDistance += camZoom;
 
-	glm::float_t prevDistance = mCamDistance;
-	camZoom /= 100;
-	camZoom *= prevDistance;
-	mCamDistance += camZoom;
-	if (mCamDistance <= 0)
-	{
-		mCamDistance = prevDistance;
-	}
+  glm::float_t prevDistance = mCamDistance;
+  camZoom /= 65;
+  camZoom *= prevDistance;
+  mCamDistance += camZoom;
+  if (mCamDistance <= 0)
+  {
+    mCamDistance = prevDistance;
+  }
 }
 
 //------------------------------------------------------------------------------
@@ -167,9 +166,10 @@ void ArcLookAt::autoview(const CPM_GLM_AABB_NS::AABB& bbox, float fov)
 //------------------------------------------------------------------------------
 void ArcLookAt::setView(const glm::vec3& view, const glm::vec3& up)
 {
-	glm::vec3 location = mCamDistance * view;
-	mArcBall->setLocationOnSphere(location, up);
-	mCamLookAt = mReferenceLookAt;
+  mReferenceLookAt = mCamLookAt;
+  glm::vec3 location = mCamDistance * view;
+  mArcBall->setLocationOnSphere(location, up);
+  mCamLookAt = mReferenceLookAt;
 }
 
 } // namespace CPM_ARC_LOOK_AT_NS
