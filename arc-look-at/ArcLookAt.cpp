@@ -96,6 +96,20 @@ void ArcLookAt::doZoom(glm::float_t camZoom)
 }
 
 //------------------------------------------------------------------------------
+void ArcLookAt::doZoom(glm::float_t camZoom, int zoomSpeed)
+{
+  glm::float_t prevDistance = mCamDistance;
+  zoomSpeed = zoomSpeed > 1 ? zoomSpeed : 2;
+  camZoom /= zoomSpeed;
+  camZoom *= prevDistance;
+  mCamDistance += camZoom;
+  if (mCamDistance <= 0)
+  {
+    mCamDistance = prevDistance;
+  }
+}
+
+//------------------------------------------------------------------------------
 void ArcLookAt::doZoom(const glm::vec2& ssPos)
 {
   // Use distance delta from center of screen to control zoom.

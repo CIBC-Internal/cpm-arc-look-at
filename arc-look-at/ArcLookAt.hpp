@@ -78,6 +78,10 @@ public:
   /// point.
   void doZoom(glm::float_t camZoom);
 
+  /// Dollys the camera towards(negative) / away(positive) from the look at
+  /// point. With vairiable zoomspeed.
+  void doZoom(glm::float_t camZoom, int zoomSpeed);
+
   /// Uses a custom function to determine camera zoom. Downwards and to the
   /// right increases size, upwards or to the left decreases size
   void doZoom(const glm::vec2& ssPos);
